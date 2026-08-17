@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 50
+
+int main()
+{
+    char str[MAX];
+    int i, len;
+
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    len = strlen(str);
+
+    if (str[0] == '0' && str[len - 1] == '1')
+    {
+        for (i = 0; i < len; i++)
+        {
+            if (str[i] != '0' && str[i] != '1')
+            {
+                printf("String does not belong to the grammar\n");
+                return 0;
+            }
+        }
+
+        printf("String belongs to the grammar\n");
+    }
+    else
+    {
+        printf("String does not belong to the grammar\n");
+    }
+
+    return 0;
+}
