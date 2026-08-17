@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char s[100];
+    int i, n, left, right, flag = 1;
+
+    printf("Enter a string: ");
+    scanf("%s", s);
+
+    n = strlen(s);
+
+    /* Count 0s at the beginning */
+    left = 0;
+    while(left < n && s[left] == '0')
+        left++;
+
+    /* Count 0s at the end */
+    right = n - 1;
+    while(right >= 0 && s[right] == '0')
+        right--;
+
+    /* Middle part must contain only 1s */
+    for(i = left; i <= right; i++)
+    {
+        if(s[i] != '1')
+        {
+            flag = 0;
+            break;
+        }
+    }
+
+    /* Number of starting and ending 0s must be equal */
+    if(left != n - 1 - right)
+        flag = 0;
+
+    if(flag == 1)
+        printf("String is accepted by the grammar\n");
+    else
+        printf("String is not accepted by the grammar\n");
+
+    return 0;
+}
