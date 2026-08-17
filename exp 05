@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char s[100];
+    int i, j, flag = 1;
+
+    printf("===========================================\n");
+    printf(" EXP 5: Check Grammar S -> 0S0 | 1S1 | 0 | 1 | e\n");
+    printf("===========================================\n");
+
+    printf("Enter a string: ");
+    scanf("%s", s);
+
+    i = 0;
+    j = strlen(s) - 1;
+
+    while(i < j)
+    {
+        if(s[i] != '0' && s[i] != '1')
+        {
+            flag = 0;
+            break;
+        }
+
+        if(s[i] != s[j])
+        {
+            flag = 0;
+            break;
+        }
+
+        i++;
+        j--;
+    }
+
+    if(flag == 1)
+        printf("Result: String is accepted by the Grammar\n");
+    else
+        printf("Result: String is not accepted by the Grammar\n");
+
+    return 0;
+}
